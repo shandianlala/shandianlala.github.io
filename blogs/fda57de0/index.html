@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="闪电拉拉的博客">
 <meta property="og:description" content="因为zookeeper的启动是通过命令来操控的，我们无法看到注册中心存在了哪些provider(提供者)或consumer（消费者），这时就需要借助dubbo-admin可视化管理平台进行实时的查看，同时也可以通过这个平台来管理provider(提供者)或consumer（消费者）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/dubbo-admin%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%9F%E6%95%88%E6%9E%9C.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/dubbo-admin%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%90%8E%E9%A6%96%E9%A1%B5.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/dubbo-admin%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%9F%E6%95%88%E6%9E%9C.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/dubbo-admin%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%90%8E%E9%A6%96%E9%A1%B5.png">
 <meta property="og:updated_time" content="2017-12-14T13:55:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置zookeeper的dubbo-admin管理平台">
 <meta name="twitter:description" content="因为zookeeper的启动是通过命令来操控的，我们无法看到注册中心存在了哪些provider(提供者)或consumer（消费者），这时就需要借助dubbo-admin可视化管理平台进行实时的查看，同时也可以通过这个平台来管理provider(提供者)或consumer（消费者）。">
-<meta name="twitter:image" content="http://ozux0lqfa.bkt.clouddn.com/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png">
+<meta name="twitter:image" content="https://shandianlala.github.io/img/qiniu/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png">
   
     <link rel="alternative" href="/atom.xml" title="闪电拉拉的博客" type="application/atom+xml">
   
@@ -182,13 +182,13 @@
 <p>jdk:1.8<br>操作系统：windows 7<br>zookeeper :zookeeper-3.4.8<br>tomcat：apache-tomcat-8.0.31<br>dubbo-version：2.5.8<br>maven：3.3.9</p>
 </blockquote>
 <h3 id="二、dubbo-admin-源码下载、编译"><a href="#二、dubbo-admin-源码下载、编译" class="headerlink" title="二、dubbo-admin 源码下载、编译"></a>二、dubbo-admin 源码下载、编译</h3><ul>
-<li>在github上下载dubbo源码，<a href="https://github.com/alibaba/dubbo" target="_blank" rel="noopener">alibaba/dubbo</a>，下载下来后进行解压，本文与2017年12月13日记录，后期dubbo版本的更新可能会影响本文所描述的效果呈现。下图是解压后的路径。<br><img src="http://ozux0lqfa.bkt.clouddn.com/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png" alt="dubbo解压后的目录"></li>
+<li>在github上下载dubbo源码，<a href="https://github.com/alibaba/dubbo" target="_blank" rel="noopener">alibaba/dubbo</a>，下载下来后进行解压，本文与2017年12月13日记录，后期dubbo版本的更新可能会影响本文所描述的效果呈现。下图是解压后的路径。<br><img src="https://shandianlala.github.io/img/qiniu/dubbo-master%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95.png" alt="dubbo解压后的目录"></li>
 <li>进入 <code>dubbo-admin</code> 文件夹，点击文件夹外的空白处，按住 <code>shift</code> 键，鼠标点击右键，选择<code>在此处打开命令行窗口</code>，进入cmd命令行。输入一下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Dmaven.skip.test=true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>出现如下结果，说明打包成功；<br><img src="http://ozux0lqfa.bkt.clouddn.com/dubbo-admin%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%9F%E6%95%88%E6%9E%9C.png" alt="dubbo-admin编译打包"><br>去<code>dubbo-admin</code>文件下的<code>target</code>目录找<code>dubbo-admin-2.5.8.war</code>的war包，把war改下名为<code>dubbo-admin</code>（方便后面浏览器访问）后扔到tomcat里面的webapps目录中，使用<code>startup.bat</code>启动tomcat。注意端口冲突。解决tomcat的端口冲突这里就不细讲了。<br><strong>注意：</strong><br>先启动zookeeper，再启动项目dubbo-admin的tomcat<br>此处是我编译打好的war包：<a href="http://download.csdn.net/download/shandianlala/10157122" target="_blank" rel="noopener">dubbo-admin.war</a></p>
+<p>出现如下结果，说明打包成功；<br><img src="https://shandianlala.github.io/img/qiniu/dubbo-admin%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%9F%E6%95%88%E6%9E%9C.png" alt="dubbo-admin编译打包"><br>去<code>dubbo-admin</code>文件下的<code>target</code>目录找<code>dubbo-admin-2.5.8.war</code>的war包，把war改下名为<code>dubbo-admin</code>（方便后面浏览器访问）后扔到tomcat里面的webapps目录中，使用<code>startup.bat</code>启动tomcat。注意端口冲突。解决tomcat的端口冲突这里就不细讲了。<br><strong>注意：</strong><br>先启动zookeeper，再启动项目dubbo-admin的tomcat<br>此处是我编译打好的war包：<a href="http://download.csdn.net/download/shandianlala/10157122" target="_blank" rel="noopener">dubbo-admin.war</a></p>
 <h3 id="三、测试安装效果"><a href="#三、测试安装效果" class="headerlink" title="三、测试安装效果"></a>三、测试安装效果</h3><p>打开浏览器输入<code>http://localhost:8080/dubbo-admin/</code>，提示需要输入用户名和密码。用户名和密码在部署<code>dubbo-admin</code>的tomcat目录里面。进入目录 <code>apache-tomcat-8.0.31\webapps\dubbo-admin\WEB-INF</code> 中，打开<code>dubbo.properties</code>配置文件，文件内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dubbo.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">dubbo.admin.root.password=root      #账户:root，密码:root</span><br><span class="line">dubbo.admin.guest.password=guest    #账户:guest，密码:guest</span><br></pre></td></tr></table></figure></p>
-<p>这里你随便选择一个账户密码进行登录就行。<br><img src="http://ozux0lqfa.bkt.clouddn.com/dubbo-admin%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%90%8E%E9%A6%96%E9%A1%B5.png" alt="dubbo-admin登录成功首页"></p>
+<p>这里你随便选择一个账户密码进行登录就行。<br><img src="https://shandianlala.github.io/img/qiniu/dubbo-admin%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F%E5%90%8E%E9%A6%96%E9%A1%B5.png" alt="dubbo-admin登录成功首页"></p>
 <p><strong>参考：</strong><br><a href="http://blog.csdn.net/evankaka/article/details/47858707#comments" target="_blank" rel="noopener">http://blog.csdn.net/evankaka/article/details/47858707#comments</a></p>
 
       

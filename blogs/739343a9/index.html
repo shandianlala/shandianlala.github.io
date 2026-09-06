@@ -16,18 +16,18 @@
 <meta property="og:site_name" content="闪电拉拉的博客">
 <meta property="og:description" content="Idea被认为是业界最好的Java开发工具，要使得它乖乖听话，任我摆布，还需要花时间调教调教它。  今天在使用idea维护之前的博客项目的时候，发现原来在eclipse上跑的好好的项目突然在idea上就不好使了，部署的web项目，富文本编辑器的图片上传报错，页面访问不到图片。下面开始我解决问题的整个步骤。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/vmoption.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea_%E4%BF%AE%E6%94%B9%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%E4%B8%BATomcat%E7%9A%84webapps1.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea-tomcat%E5%8F%91%E5%B8%83%E7%9B%AE%E5%BD%952.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%951.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%952.png">
-<meta property="og:image" content="http://ozux0lqfa.bkt.clouddn.com/idea%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6yes.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/vmoption.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea_%E4%BF%AE%E6%94%B9%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%E4%B8%BATomcat%E7%9A%84webapps1.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea-tomcat%E5%8F%91%E5%B8%83%E7%9B%AE%E5%BD%952.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%951.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%952.png">
+<meta property="og:image" content="https://shandianlala.github.io/img/qiniu/idea%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6yes.png">
 <meta property="og:updated_time" content="2017-12-14T13:55:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntelliJ IDEA访问不到web项目的图片">
 <meta name="twitter:description" content="Idea被认为是业界最好的Java开发工具，要使得它乖乖听话，任我摆布，还需要花时间调教调教它。  今天在使用idea维护之前的博客项目的时候，发现原来在eclipse上跑的好好的项目突然在idea上就不好使了，部署的web项目，富文本编辑器的图片上传报错，页面访问不到图片。下面开始我解决问题的整个步骤。">
-<meta name="twitter:image" content="http://ozux0lqfa.bkt.clouddn.com/vmoption.png">
+<meta name="twitter:image" content="https://shandianlala.github.io/img/qiniu/vmoption.png">
   
     <link rel="alternative" href="/atom.xml" title="闪电拉拉的博客" type="application/atom+xml">
   
@@ -185,17 +185,17 @@
 <p>Idea被认为是业界最好的Java开发工具，要使得它乖乖听话，任我摆布，还需要花时间调教调教它。</p>
 </blockquote>
 <p>今天在使用idea维护之前的博客项目的时候，发现原来在eclipse上跑的好好的项目突然在idea上就不好使了，部署的web项目，富文本编辑器的图片上传报错，页面访问不到图片。下面开始我解决问题的整个步骤。<br><a id="more"></a></p>
-<h3 id="运行项目，控制台打印的日志乱码。"><a href="#运行项目，控制台打印的日志乱码。" class="headerlink" title="运行项目，控制台打印的日志乱码。"></a>运行项目，控制台打印的日志乱码。</h3><p>在tomcat的配置页面中<code>VM options</code> 选项中加入<br><img src="http://ozux0lqfa.bkt.clouddn.com/vmoption.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
+<h3 id="运行项目，控制台打印的日志乱码。"><a href="#运行项目，控制台打印的日志乱码。" class="headerlink" title="运行项目，控制台打印的日志乱码。"></a>运行项目，控制台打印的日志乱码。</h3><p>在tomcat的配置页面中<code>VM options</code> 选项中加入<br><img src="https://shandianlala.github.io/img/qiniu/vmoption.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure></p>
 <h3 id="项目成功跑起来了，但用富文本编辑器上传图片，页面报错。"><a href="#项目成功跑起来了，但用富文本编辑器上传图片，页面报错。" class="headerlink" title="项目成功跑起来了，但用富文本编辑器上传图片，页面报错。"></a>项目成功跑起来了，但用富文本编辑器上传图片，页面报错。</h3><ul>
-<li>idea中tomcat发布项目的默认路径是项目所在地里的target目录里面。<br>我的做法是更改项目发布路径到tomcat目录下的webapps目录下面，下面更改发布路径到tomcat。<br><img src="http://ozux0lqfa.bkt.clouddn.com/idea_%E4%BF%AE%E6%94%B9%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%E4%B8%BATomcat%E7%9A%84webapps1.png" alt=""><br><img src="http://ozux0lqfa.bkt.clouddn.com/idea-tomcat%E5%8F%91%E5%B8%83%E7%9B%AE%E5%BD%952.png" alt=""><br>这样之后，在重新运行项目，项目就会发布到tomcat的webapps目录里。</li>
+<li>idea中tomcat发布项目的默认路径是项目所在地里的target目录里面。<br>我的做法是更改项目发布路径到tomcat目录下的webapps目录下面，下面更改发布路径到tomcat。<br><img src="https://shandianlala.github.io/img/qiniu/idea_%E4%BF%AE%E6%94%B9%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84%E4%B8%BATomcat%E7%9A%84webapps1.png" alt=""><br><img src="https://shandianlala.github.io/img/qiniu/idea-tomcat%E5%8F%91%E5%B8%83%E7%9B%AE%E5%BD%952.png" alt=""><br>这样之后，在重新运行项目，项目就会发布到tomcat的webapps目录里。</li>
 </ul>
 <h3 id="配置图片资源文件"><a href="#配置图片资源文件" class="headerlink" title="配置图片资源文件"></a>配置图片资源文件</h3><ul>
-<li><strong>sdll-blog</strong>项目的图片资源目录我是存储在<em>upload</em>文件里面，<br><img src="http://ozux0lqfa.bkt.clouddn.com/idea%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt=""></li>
-<li>现在我需要在idea里面配置upload文件资源。<br><img src="http://ozux0lqfa.bkt.clouddn.com/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%951.png" alt=""><br><strong>注意：</strong><code>Application context</code>里面的值配置为<code>/upload</code></li>
+<li><strong>sdll-blog</strong>项目的图片资源目录我是存储在<em>upload</em>文件里面，<br><img src="https://shandianlala.github.io/img/qiniu/idea%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt=""></li>
+<li>现在我需要在idea里面配置upload文件资源。<br><img src="https://shandianlala.github.io/img/qiniu/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%951.png" alt=""><br><strong>注意：</strong><code>Application context</code>里面的值配置为<code>/upload</code></li>
 </ul>
-<p><img src="http://ozux0lqfa.bkt.clouddn.com/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%952.png" alt=""><br>完成之后，再次运行项目，还是报找不到文件错误，查看控制台打印的日志，发现一个坑，发现在tomcat的安装路径中有部分有空格。文件夹<strong>IDEA SERVER</strong>控制条输出日志空格被解析成<strong>IDEA%2%SERVER</strong>，发现这个问题后，重新配置了个tomcat,重新运行项目，</p>
+<p><img src="https://shandianlala.github.io/img/qiniu/idea%E9%85%8D%E7%BD%AE%E8%B5%84%E6%BA%90%E7%9B%AE%E5%BD%952.png" alt=""><br>完成之后，再次运行项目，还是报找不到文件错误，查看控制台打印的日志，发现一个坑，发现在tomcat的安装路径中有部分有空格。文件夹<strong>IDEA SERVER</strong>控制条输出日志空格被解析成<strong>IDEA%2%SERVER</strong>，发现这个问题后，重新配置了个tomcat,重新运行项目，</p>
 <ul>
-<li>浏览器访问资源文件<br><img src="http://ozux0lqfa.bkt.clouddn.com/idea%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6yes.png" alt=""></li>
+<li>浏览器访问资源文件<br><img src="https://shandianlala.github.io/img/qiniu/idea%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6yes.png" alt=""></li>
 <li>正常访问upload文件夹里面的图片资源了，富文本编辑器也不报错了哦。</li>
 </ul>
 
