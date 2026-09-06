@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="闪电拉拉的博客">
 <meta property="og:description" content="在项目中也一直在用dubbo，使用Zookeeper 作为注册中心，但对于的内在的一些原理，至今都没有正儿八经的了解过，只是纯粹把它作为一种工具在使用。当被人问到Zookeeper 的时候，整个人都是懵逼的，故写下此文。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s1.51cto.com/oss/201809/12/08308a2ed38371a6fef72f281598b3df.jpg">
-<meta property="og:image" content="https://s4.51cto.com/oss/201809/12/a515a1458ba2bc659fd1c601740cdf53.jpg">
-<meta property="og:image" content="https://s5.51cto.com/oss/201809/12/96fea87c7024afd577376e7a4b26e460.jpg">
-<meta property="og:image" content="https://s4.51cto.com/oss/201809/12/5e245feb8f8311195763d2abb3e27c20.jpg">
-<meta property="og:image" content="https://cdn.nlark.com/lark/0/2018/jpeg/13615/1533281862290-08dd18e0-7950-4ff1-8de0-6dd66362e195.jpeg">
+<meta property="og:image" content="https://shandianlala.github.io/img/51cto/08308a2ed38371a6fef72f281598b3df.jpg">
+<meta property="og:image" content="https://shandianlala.github.io/img/51cto/a515a1458ba2bc659fd1c601740cdf53.jpg">
+<meta property="og:image" content="https://shandianlala.github.io/img/51cto/96fea87c7024afd577376e7a4b26e460.jpg">
+<meta property="og:image" content="https://shandianlala.github.io/img/51cto/5e245feb8f8311195763d2abb3e27c20.jpg">
+<meta property="og:image" content="https://shandianlala.github.io/img/lark/1533281862290-08dd18e0-7950-4ff1-8de0-6dd66362e195.jpeg">
 <meta property="og:updated_time" content="2019-04-13T14:57:08.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZooKeeper的使用及其原理">
 <meta name="twitter:description" content="在项目中也一直在用dubbo，使用Zookeeper 作为注册中心，但对于的内在的一些原理，至今都没有正儿八经的了解过，只是纯粹把它作为一种工具在使用。当被人问到Zookeeper 的时候，整个人都是懵逼的，故写下此文。">
-<meta name="twitter:image" content="https://s1.51cto.com/oss/201809/12/08308a2ed38371a6fef72f281598b3df.jpg">
+<meta name="twitter:image" content="https://shandianlala.github.io/img/51cto/08308a2ed38371a6fef72f281598b3df.jpg">
   
     <link rel="alternative" href="/atom.xml" title="闪电拉拉的博客" type="application/atom+xml">
   
@@ -232,7 +232,7 @@
 <li>命名空间由 ZooKeeper 中的数据寄存器组成，称为 Znode，这些类似于文件和目录。</li>
 <li>与为存储设计的典型文件系统不同，ZooKeeper 数据保存在内存中，这意味着 ZooKeeper 可以实现高吞吐量和低延迟。</li>
 </ul>
-<p><img src="https://s1.51cto.com/oss/201809/12/08308a2ed38371a6fef72f281598b3df.jpg" alt=""></p>
+<p><img src="https://shandianlala.github.io/img/51cto/08308a2ed38371a6fef72f281598b3df.jpg" alt=""></p>
 <p>ZooKeeper 数据模型示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[zk: 10.1.39.43:4180(CONNECTED) 7] get /hello  </span><br><span class="line">world  </span><br><span class="line">cZxid = 0x10000042c  </span><br><span class="line">ctime = Fri May 17 17:57:33 CST 2013  </span><br><span class="line">mZxid = 0x10000042c  </span><br><span class="line">mtime = Fri May 17 17:57:33 CST 2013  </span><br><span class="line">pZxid = 0x10000042c  </span><br><span class="line">cversion = 0  </span><br><span class="line">dataVersion = 0  </span><br><span class="line">aclVersion = 0  </span><br><span class="line">ephemeralOwner = 0x0  </span><br><span class="line">dataLength = 5  </span><br><span class="line">numChildren = 0</span><br></pre></td></tr></table></figure>
 <p>使用get命令获取指定节点的数据时, 同时也将返回该节点的状态信息, 称为Stat. 其包含如下字段:</p>
@@ -270,7 +270,7 @@
 <p>get命令. get命令的第一个参数指定znode, 第二个参数如果为true, 则说明监听该znode的更新和删除事件.stat命令. stat命令用于获取znode的状态信息. 第一个参数指定znode, 如果第二个参数为true, 则监听该node的更新和删除事件.</p>
 <h1 id="三、集群构建"><a href="#三、集群构建" class="headerlink" title="三、集群构建"></a>三、集群构建</h1><p>为了保证高可用，最好是以集群形态来部署 ZooKeeper，这样只要集群中大部分机器是可用的（能够容忍一定的机器故障），那么 ZooKeeper 本身仍然是可用的。</p>
 <h2 id="3-1-集群角色介绍"><a href="#3-1-集群角色介绍" class="headerlink" title="3.1.集群角色介绍"></a>3.1.集群角色介绍</h2><p>客户端使用这个 TCP 链接来发送请求、获取结果、获取监听事件以及发送心跳包。如果这个连接异常断开了，客户端可以连接到另外的机器上。ZooKeeper 官方提供的架构图：</p>
-<p><img src="https://s4.51cto.com/oss/201809/12/a515a1458ba2bc659fd1c601740cdf53.jpg" alt=""></p>
+<p><img src="https://shandianlala.github.io/img/51cto/a515a1458ba2bc659fd1c601740cdf53.jpg" alt=""></p>
 <p>上图中每一个 Server 代表一个安装 ZooKeeper 服务的服务器。组成 ZooKeeper 服务的服务器都会在内存中维护当前的服务器状态，并且每台服务器之间都互相保持着通信。集群间通过 Zab 协议（Zookeeper Atomic Broadcast）来保持数据的一致性。</p>
 <ul>
 <li><p>顺序访问</p>
@@ -284,13 +284,13 @@
 </ul>
 <p>最典型集群模式：Master/Slave 模式（主备模式）。在这种模式中，通常 Master 服务器作为主服务器提供写服务，其他的 Slave 服务器从服务器通过异步复制的方式获取 Master 服务器最新的数据提供读服务。但是，在 ZooKeeper 中没有选择传统的 Master/Slave 概念，而是引入了<strong>Leader、Follower 和 Observer </strong>三种角色。</p>
 <p>如下图所示：</p>
-<p><img src="https://s5.51cto.com/oss/201809/12/96fea87c7024afd577376e7a4b26e460.jpg" alt=""></p>
+<p><img src="https://shandianlala.github.io/img/51cto/96fea87c7024afd577376e7a4b26e460.jpg" alt=""></p>
 <ul>
 <li>ZooKeeper 集群中的所有机器通过一个 Leader 选举过程来选定一台称为 “Leader” 的机器。</li>
 <li>Leader 既可以为客户端提供写服务又能提供读服务。除了 Leader 外，Follower 和  Observer 都只能提供读服务。</li>
 <li>Follower 和 Observer 唯一的区别在于 Observer 机器不参与 Leader 的选举过程，也不参与写操作的“过半写成功”策略，因此 Observer 机器可以在不影响写性能的情况下提升集群的读性能。</li>
 </ul>
-<p><img src="https://s4.51cto.com/oss/201809/12/5e245feb8f8311195763d2abb3e27c20.jpg" alt=""></p>
+<p><img src="https://shandianlala.github.io/img/51cto/5e245feb8f8311195763d2abb3e27c20.jpg" alt=""></p>
 <h2 id="3-1-ZAB-协议-amp-Paxos-算法"><a href="#3-1-ZAB-协议-amp-Paxos-算法" class="headerlink" title="3.1.ZAB 协议 &amp; Paxos 算法"></a>3.1.ZAB 协议 &amp; Paxos 算法</h2><ul>
 <li><p>ZAB 协议 &amp; Paxos 算法</p>
 <p>Paxos 算法可以说是  ZooKeeper 的灵魂了。但是，ZooKeeper 并没有完全采用 Paxos 算法 ，而是使用 ZAB 协议作为其保证数据一致性的核心算法。</p>
@@ -320,7 +320,7 @@
 </li>
 <li><p>在 Dubbo 中使用 Zookeeper</p>
 <p>Dubbo 使用 Zookeeper 用于服务的注册发现和配置管理，在 Zookeeper 中数据的组织由下图所示：</p>
-<p><img src="https://cdn.nlark.com/lark/0/2018/jpeg/13615/1533281862290-08dd18e0-7950-4ff1-8de0-6dd66362e195.jpeg" alt=""></p>
+<p><img src="https://shandianlala.github.io/img/lark/1533281862290-08dd18e0-7950-4ff1-8de0-6dd66362e195.jpeg" alt=""></p>
 </li>
 </ul>
 <p>首先，所有 Dubbo 相关的数据都组织在 <code>/duboo</code> 的根节点下。</p>
